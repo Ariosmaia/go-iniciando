@@ -11,6 +11,11 @@ func main() {
 
 	exibeIntroducao()
 	exibeMenu()
+
+	//_ indica quero ignorar a varivavel qualquer variavel do retorno
+	// _, idade := devolveNome()
+	// fmt.Println("E tenho", idade, "anos")
+
 	comando := leComando()
 
 	switch comando {
@@ -28,6 +33,13 @@ func main() {
 		os.Exit(-1)
 	}
 }
+
+// Função com dois retornos
+// func devolveNome() (string, int) {
+// 	nome := "Allan"
+// 	idade := 28
+// 	return nome, idade
+// }
 
 func exibeIntroducao() {
 	nome := "Allan"
@@ -54,6 +66,6 @@ func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 	site := "https://ww.alura.com.br"
 	// Existem funções no Go com mais de um retorno
-	resp, err := http.Get(site)
-
+	resp, _ := http.Get(site)
+	fmt.Println(resp)
 }
