@@ -1,18 +1,14 @@
 package main
 
-// Pacote net/http para fazer requisições
 import (
 	"fmt"
 	"net/http"
 	"os"
 )
 
-// Go não tem while
-// Para loops usamos o for
 func main() {
 	exibeIntroducao()
 
-	// Se eu passar um for sem nada ele vai rodar indefinidamente
 	for {
 		exibeMenu()
 
@@ -57,6 +53,14 @@ func leComando() int {
 
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
+	//Array tem tamanho fixo
+	var sites [4]string
+	sites[0] = "http://random-status-code.herokuapp.com/"
+	sites[1] = "https://www.alura.com.br"
+	sites[2] = "http://www.caelum.com.br"
+
+	fmt.Println(sites)
+
 	site := "http://random-status-code.herokuapp.com/"
 	resp, _ := http.Get(site)
 
@@ -67,13 +71,3 @@ func iniciarMonitoramento() {
 			resp.StatusCode)
 	}
 }
-
-// O que aprendemos?
-
-// Pacote net/http, com funcionalidades de acesso à internet, de requisições web
-// Entre elas, a função http.Get, para fazer uma requisição GET para um site
-// Funções com múltiplos retornos
-// Identificador em branco, para ignorar um ou mais retornos de uma função
-// Status de uma requisição
-// Uma requisição de sucesso possui status code 200
-// A instrução for, para deixar o nosso programa em loop eterno
