@@ -7,39 +7,32 @@ import (
 	"os"
 )
 
+// Go não tem while
+// Para loops usamos o for
 func main() {
-
 	exibeIntroducao()
-	exibeMenu()
 
-	//_ indica quero ignorar a varivavel qualquer variavel do retorno
-	// _, idade := devolveNome()
-	// fmt.Println("E tenho", idade, "anos")
+	// Se eu passar um for sem nada ele vai rodar indefinidamente
+	for {
+		exibeMenu()
 
-	comando := leComando()
+		comando := leComando()
 
-	switch comando {
-	case 1:
-		iniciarMonitoramento()
-	case 2:
-		fmt.Println("Exibindo Logs...")
-	case 0:
-		fmt.Println("Saindo do programa")
-		// 0 para sair do programa com sucesso
-		os.Exit(0)
-	default:
-		fmt.Println("Não conheço este comando")
-		// -1 indica que tem algum problema
-		os.Exit(-1)
+		switch comando {
+		case 1:
+			iniciarMonitoramento()
+		case 2:
+			fmt.Println("Exibindo Logs...")
+		case 0:
+			fmt.Println("Saindo do programa")
+			os.Exit(0)
+		default:
+			fmt.Println("Não conheço este comando")
+			os.Exit(-1)
+		}
 	}
-}
 
-// Função com dois retornos
-// func devolveNome() (string, int) {
-// 	nome := "Allan"
-// 	idade := 28
-// 	return nome, idade
-// }
+}
 
 func exibeIntroducao() {
 	nome := "Allan"
@@ -64,8 +57,13 @@ func leComando() int {
 
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
-	site := "https://ww.alura.com.br"
-	// Existem funções no Go com mais de um retorno
+	site := "http://random-status-code.herokuapp.com/"
 	resp, _ := http.Get(site)
-	fmt.Println(resp)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("Site:", site, "foi carregado com sucesso!")
+	} else {
+		fmt.Println("Site:", site, "esta com problemas. Status Code:",
+			resp.StatusCode)
+	}
 }
