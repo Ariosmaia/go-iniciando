@@ -1,55 +1,26 @@
-// Indica que é o pacote principal é o sistem deve começar por ele
 package main
 
-// Pacotes de formatação
-// Tem uma função TypeOf(), entre outras
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
-// Função principal do programa
-// Se eu não declarar uma variavel e não usar ele dá erro
-// Não preciso declarar o tipo das variaveis sem pre no GO, ele identica o tipo das variaveis
-// Posso escrever as váriaveis de 3 formas:
-// - var nome string = "Allan"
-// - var nome = "Allan"
-// - nome := "Allan"
 func main() {
-
-	// Se não passar valor para string ele mada um texto vazio
 	nome := "Allan"
-	// No Go se eu não atribuir valor a váriavele e deixa 0
-	idade := 28
-	// Se não passar nada ele manda 0.0
 	versao := 1.1
-	// Primeira letra da função é maisuclo
-	// , para concatenar
-	fmt.Println("Olá sr., Allan Rios", nome, "Sua idade é", idade)
+	fmt.Println("Olá, sr.", nome)
 	fmt.Println("Este programa está na versão", versao)
 
-	fmt.Println("O tipo da variavel nome é", reflect.TypeOf(nome))
+	fmt.Println("1 - Iniciar Monitoramento")
+	fmt.Println("2 - Exibir Logs")
+	fmt.Println("0 - Sair do Programa")
+
+	// Captura o que variavel digitou
+	// Recebe um modificador e uma variavel
+	// %d representa um inteiro
+	// O que o usuario digitar quero salvar na variavel comando
+	// & indica o edenreço da variavel que quero salvar
+	var comando int
+	//fmt.Scanf("%d", &comando)
+	// Scan não precisa passar o tipo da variavel
+	fmt.Scan(&comando)
+
+	fmt.Println("O comando escolhido foi", comando)
 }
-
-// Para compilar:
-// go build hello.go
-// ./hello
-
-// Para facilitar e não ficar dando o comando duas vezes:
-// Compila e executa
-// go run hello.go
-
-// ; é opcional em Go
-// Go ele já tem boas práticas de inicio
-
-// O que aprendemos?
-// Instalação do Go
-// Go Workspace
-// A pasta bin para os arquivos binários, compilados
-// A pasta src para o código fonte
-// A pasta pkg para os pacotes compartilhados entre as aplicações
-// Instalação da extensão do Go no Visual Studio Code
-// Com isso temos autocomplete, detecção de erros, etc
-// Convenções da linguagem
-// Implementação do Hello World
-// Compilando e executando um programa em Go
