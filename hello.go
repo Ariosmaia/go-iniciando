@@ -24,3 +24,16 @@ func main() {
 
 	fmt.Println("O comando escolhido foi", comando)
 }
+
+// O que aprendemos?
+
+// Declaração de variáveis
+// Valor padrão das variáveis sem valor inicial
+// Inferência de tipos de variáveis
+// Descobrir o tipo da variável
+// Através da função TypeOf, do pacote reflect
+// Declaração curta de variáveis
+// Ler dados digitados do usuário
+// Através das funções Scanf e Scan, do pacote fmt
+// Mais convenções do Go
+// Variáveis e imports não utilizados são deletados
