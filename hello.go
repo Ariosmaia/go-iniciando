@@ -87,3 +87,14 @@ func testaSite(site string) {
 			resp.StatusCode)
 	}
 }
+
+// O que aprendemos?
+
+// Coleções: Arrays e Slices
+// Trabalhar com Arrays e Slices
+// Diferenças entre Arrays e Slices
+// A estrutura de repetição for
+// Operador de iteração range
+// O range nos dá acesso a cada item da coleção, nos retornando a posição do item iterado e o próprio item daquela posição
+// Constantes
+// Trabalhando com o pacote time
