@@ -4,8 +4,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -101,26 +103,29 @@ func leSitesDoArquivo() []string {
 	var sites []string
 
 	arquivo, err := os.Open("sites.txt")
-	// Ler tudo de uma vez e abrir
-	// arquivo, err := ioutil.ReadFile("sites.txt")
 
 	if err != nil {
 		fmt.Println("Ocorreu um erro:", err)
 	}
-
-	// string conveter o array de bytes do ioutil
-	// fmt.Println(string(arquivo))
 
 	leitor := bufio.NewReader(arquivo)
+	for {
+		linha, err := leitor.ReadString('\n')
+		// strings tem as funções para string
+		linha = strings.TrimSpace(linha)
+		fmt.Println(linha)
 
-	// Ler byte por byte e pega onde quebra a string
-	linha, err := leitor.ReadString('\n')
+		sites = append(sites, linha)
 
-	if err != nil {
-		fmt.Println("Ocorreu um erro:", err)
+		// Pega o erro end o file
+		// Quando chegar no final do arquivo gera erro
+		if err == io.EOF {
+			// Sai do loop for
+			break
+		}
 	}
 
-	fmt.Println(linha)
-
+	// Preciso fechar o arquivio
+	arquivo.Close()
 	return sites
 }
