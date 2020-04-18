@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"reflect"
 )
 
 func main() {
-	exibeIntroducao()
-
+	//exibeIntroducao()
+	exibeNome()
 	for {
 		exibeMenu()
 
@@ -53,7 +54,8 @@ func leComando() int {
 
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
-	//Array tem tamanho fixo
+	// Array tem tamanho fixo
+	// Os arrays são limitados é melhor usar Slices
 	var sites [4]string
 	sites[0] = "http://random-status-code.herokuapp.com/"
 	sites[1] = "https://www.alura.com.br"
@@ -70,4 +72,23 @@ func iniciarMonitoramento() {
 		fmt.Println("Site:", site, "esta com problemas. Status Code:",
 			resp.StatusCode)
 	}
+}
+
+func exibeNome() {
+	// Slice se adapta ai tamanho doarray
+	nomes := []string{"Douglas", "Daniel", "Bernardo"}
+	// Adiciona itens no slice/array
+	fmt.Println(nomes)
+	fmt.Println(reflect.TypeOf(nomes))
+	fmt.Println("O meu slice tem", len(nomes), "itens")
+	// cap mostra a capacidade
+	fmt.Println("O meu slice tem capacidade para", cap(nomes), "itens")
+
+	nomes = append(nomes, "Aparecida")
+
+	fmt.Println(nomes)
+	fmt.Println(reflect.TypeOf(nomes))
+	fmt.Println("O meu slice tem", len(nomes))
+	// Toda vez que vou estourar a capacidade do slice ele dobra
+	fmt.Println("O meu slice tem capacidade para", cap(nomes), "itens")
 }
