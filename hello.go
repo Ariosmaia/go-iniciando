@@ -13,7 +13,7 @@ const delay = 5
 
 func main() {
 	exibeIntroducao()
-
+	leSitesDoArquivo()
 	for {
 		exibeMenu()
 
@@ -59,8 +59,11 @@ func leComando() int {
 
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
-	sites := []string{"http://random-status-code.herokuapp.com/",
-		"https://www.alura.com.br", "http://www.caelum.com.br"}
+
+	// sites := []string{"http://random-status-code.herokuapp.com/",
+	// 	"https://www.alura.com.br", "http://www.caelum.com.br"}
+
+	sites := leSitesDoArquivo()
 
 	fmt.Println(sites)
 
@@ -88,13 +91,12 @@ func testaSite(site string) {
 	}
 }
 
-// O que aprendemos?
+func leSitesDoArquivo() []string {
 
-// Coleções: Arrays e Slices
-// Trabalhar com Arrays e Slices
-// Diferenças entre Arrays e Slices
-// A estrutura de repetição for
-// Operador de iteração range
-// O range nos dá acesso a cada item da coleção, nos retornando a posição do item iterado e o próprio item daquela posição
-// Constantes
-// Trabalhando com o pacote time
+	var sites []string
+
+	// Abre arquivos
+	arquivo, _ := os.Open("sites.txt")
+	fmt.Println(arquivo)
+	return sites
+}
