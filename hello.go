@@ -1,8 +1,9 @@
 package main
 
-// Pacote os fala com o sistema operacional
+// Pacote net/http para fazer requisições
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -12,10 +13,9 @@ func main() {
 	exibeMenu()
 	comando := leComando()
 
-	// Nâo tem o break, ele já sai automatico
 	switch comando {
 	case 1:
-		fmt.Println("Monitorando...")
+		iniciarMonitoramento()
 	case 2:
 		fmt.Println("Exibindo Logs...")
 	case 0:
@@ -29,7 +29,6 @@ func main() {
 	}
 }
 
-// Função que não retornar nada
 func exibeIntroducao() {
 	nome := "Allan"
 	versao := 1.1
@@ -43,7 +42,6 @@ func exibeMenu() {
 	fmt.Println("0 - Sair do Programa")
 }
 
-// Função com retorno
 func leComando() int {
 	var comandoLido int
 	fmt.Scan(&comandoLido)
@@ -52,11 +50,10 @@ func leComando() int {
 	return comandoLido
 }
 
-// O que aprendemos?
+func iniciarMonitoramento() {
+	fmt.Println("Monitorando...")
+	site := "https://ww.alura.com.br"
+	// Existem funções no Go com mais de um retorno
+	resp, err := http.Get(site)
 
-// Controle de fluxo com if
-// Sua condição não fica entre parênteses e deve sempre retornar um booleano
-// Controle de fluxo com switch
-// Se os casos não forem atendidos, será executado o código do caso default
-// Introdução às funções
-// Pacote os, para encerrar o programa
+}
