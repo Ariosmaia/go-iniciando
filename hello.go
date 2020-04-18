@@ -17,15 +17,15 @@ func main() {
 
 	fmt.Println("O comando escolhido foi", comando)
 
-	// Não precisa do abre fecha parenteses
-	// Sempre tem que passar um booleano, ele só aceita expressões
-	if comando == 1 {
+	// Nâo tem o break, ele já sai automatico
+	switch comando {
+	case 1:
 		fmt.Println("Monitorando...")
-	} else if comando == 2 {
+	case 2:
 		fmt.Println("Exibindo Logs...")
-	} else if comando == 0 {
+	case 0:
 		fmt.Println("Saindo do programa")
-	} else {
+	default:
 		fmt.Println("Não conheço este comando")
 	}
 }
