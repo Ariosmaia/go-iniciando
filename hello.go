@@ -1,6 +1,5 @@
 package main
 
-// iouutil para abrir arquivos e ler
 import (
 	"bufio"
 	"fmt"
@@ -16,7 +15,7 @@ const delay = 5
 
 func main() {
 	exibeIntroducao()
-	leSitesDoArquivo()
+	registraLog("site-faso", false)
 	for {
 		exibeMenu()
 
@@ -92,9 +91,11 @@ func testaSite(site string) {
 
 	if resp.StatusCode == 200 {
 		fmt.Println("Site:", site, "foi carregado com sucesso!")
+		registraLog(site, true)
 	} else {
 		fmt.Println("Site:", site, "esta com problemas. Status Code:",
 			resp.StatusCode)
+		registraLog(site, false)
 	}
 }
 
@@ -111,21 +112,30 @@ func leSitesDoArquivo() []string {
 	leitor := bufio.NewReader(arquivo)
 	for {
 		linha, err := leitor.ReadString('\n')
-		// strings tem as funções para string
 		linha = strings.TrimSpace(linha)
 		fmt.Println(linha)
 
 		sites = append(sites, linha)
 
-		// Pega o erro end o file
-		// Quando chegar no final do arquivo gera erro
 		if err == io.EOF {
-			// Sai do loop for
 			break
 		}
 	}
 
-	// Preciso fechar o arquivio
 	arquivo.Close()
 	return sites
+}
+
+func registraLog(site string, status bool) {
+	// Abre e cria o arquivo
+	// O_RDWR ler e escrever
+	// O_CREATE criar arquivo
+	// 0666 permisão
+	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE, 0666)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(arquivo)
 }
