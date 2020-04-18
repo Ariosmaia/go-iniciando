@@ -1,10 +1,15 @@
 package main
 
+// Time pacote para trabalhar com tempo
 import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 )
+
+const monitoramentos = 2
+const delay = 5
 
 func main() {
 	exibeIntroducao()
@@ -47,6 +52,7 @@ func leComando() int {
 	var comandoLido int
 	fmt.Scan(&comandoLido)
 	fmt.Println("O comando escolhido foi", comandoLido)
+	fmt.Println("")
 
 	return comandoLido
 }
@@ -58,18 +64,20 @@ func iniciarMonitoramento() {
 
 	fmt.Println(sites)
 
-	// for i := 0; i < len(sites); i++ {
-	// 	fmt.Println(sites[i])
-	// }
-
-	// ou
-
-	// parametro do indice e o retorna o paramentro que está passando
-	for i, site := range sites {
-		fmt.Println("Estou passando na posicao", i, "do meu e essa posicao tem o site:", site)
+	for i := 0; i < monitoramentos; i++ {
+		for i, site := range sites {
+			fmt.Println("Testando site", i, ":", site)
+			testaSite(site)
+		}
+		// Para esperar algum tempo
+		time.Sleep(delay * time.Second)
+		fmt.Println("")
 	}
 
-	site := "http://random-status-code.herokuapp.com/"
+	fmt.Println("")
+}
+
+func testaSite(site string) {
 	resp, _ := http.Get(site)
 
 	if resp.StatusCode == 200 {
