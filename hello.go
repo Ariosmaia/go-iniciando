@@ -1,7 +1,8 @@
 package main
 
-// Time pacote para trabalhar com tempo
+// iouutil para abrir arquivos e ler
 import (
+	"bufio"
 	"fmt"
 	"net/http"
 	"os"
@@ -99,13 +100,27 @@ func leSitesDoArquivo() []string {
 
 	var sites []string
 
-	// Abre arquivos
 	arquivo, err := os.Open("sites.txt")
+	// Ler tudo de uma vez e abrir
+	// arquivo, err := ioutil.ReadFile("sites.txt")
 
 	if err != nil {
 		fmt.Println("Ocorreu um erro:", err)
 	}
 
-	fmt.Println(arquivo)
+	// string conveter o array de bytes do ioutil
+	// fmt.Println(string(arquivo))
+
+	leitor := bufio.NewReader(arquivo)
+
+	// Ler byte por byte e pega onde quebra a string
+	linha, err := leitor.ReadString('\n')
+
+	if err != nil {
+		fmt.Println("Ocorreu um erro:", err)
+	}
+
+	fmt.Println(linha)
+
 	return sites
 }
