@@ -6,3 +6,11 @@
 18/04/2020 21:11:19 - http://www.alura.com.br - online: true
 18/04/2020 21:11:20 - http://www.caelum.com.br - online: true
 18/04/2020 21:11:20 - http://www.casadocodigo.com.br - online: true
+18/04/2020 21:18:17 - http://random-status-code.herokuapp.com - online: false
+18/04/2020 21:18:18 - http://www.alura.com.br - online: true
+18/04/2020 21:18:19 - http://www.caelum.com.br - online: true
+18/04/2020 21:18:20 - http://www.casadocodigo.com.br - online: true
+18/04/2020 21:18:25 - http://random-status-code.herokuapp.com - online: false
+18/04/2020 21:18:25 - http://www.alura.com.br - online: true
+18/04/2020 21:18:26 - http://www.caelum.com.br - online: true
+18/04/2020 21:18:27 - http://www.casadocodigo.com.br - online: true
