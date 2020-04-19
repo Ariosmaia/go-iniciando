@@ -1,6 +1,5 @@
 package main
 
-// strconv para trabalhar com conversão de string
 import (
 	"bufio"
 	"fmt"
@@ -136,7 +135,6 @@ func registraLog(site string, status bool) {
 }
 
 func imprimeLogs() {
-	// ELa já abre e fecha
 	arquivo, err := ioutil.ReadFile("log.txt")
 
 	if err != nil {
@@ -145,13 +143,3 @@ func imprimeLogs() {
 
 	fmt.Println(string(arquivo))
 }
-
-// O que aprendemos?
-
-// Abrir arquivos
-// Se o arquivo não existir, nós o criamos
-// As flags da função os.OpenFile
-// Escrever em arquivos
-// Converter tipos para string
-// Trabalhar com tempo e formatá-lo
-// Exibir o conteúdo de um arquivo
