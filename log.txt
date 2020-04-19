@@ -1,7 +1,8 @@
-http://www.alura.com.br- online: true
-http://www.caelum.com.br- online: true
-http://www.casadocodigo.com.br- online: true
-http://random-status-code.herokuapp.com- online: true
-http://www.alura.com.br- online: true
-http://www.caelum.com.br- online: true
-http://www.casadocodigo.com.br- online: true
+18/04/2020 21:11:11 - http://random-status-code.herokuapp.com - online: false
+18/04/2020 21:11:11 - http://www.alura.com.br - online: true
+18/04/2020 21:11:12 - http://www.caelum.com.br - online: true
+18/04/2020 21:11:13 - http://www.casadocodigo.com.br - online: true
+18/04/2020 21:11:18 - http://random-status-code.herokuapp.com - online: false
+18/04/2020 21:11:19 - http://www.alura.com.br - online: true
+18/04/2020 21:11:20 - http://www.caelum.com.br - online: true
+18/04/2020 21:11:20 - http://www.casadocodigo.com.br - online: true
