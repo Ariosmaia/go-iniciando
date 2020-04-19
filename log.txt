@@ -1,0 +1,7 @@
+http://www.alura.com.br- online: true
+http://www.caelum.com.br- online: true
+http://www.casadocodigo.com.br- online: true
+http://random-status-code.herokuapp.com- online: true
+http://www.alura.com.br- online: true
+http://www.caelum.com.br- online: true
+http://www.casadocodigo.com.br- online: true

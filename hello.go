@@ -1,11 +1,13 @@
 package main
 
+// strconv para trabalhar com conversão de string
 import (
 	"bufio"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -15,7 +17,6 @@ const delay = 5
 
 func main() {
 	exibeIntroducao()
-	registraLog("site-faso", false)
 	for {
 		exibeMenu()
 
@@ -62,19 +63,13 @@ func leComando() int {
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
 
-	// sites := []string{"http://random-status-code.herokuapp.com/",
-	// 	"https://www.alura.com.br", "http://www.caelum.com.br"}
-
 	sites := leSitesDoArquivo()
-
-	fmt.Println(sites)
 
 	for i := 0; i < monitoramentos; i++ {
 		for i, site := range sites {
 			fmt.Println("Testando site", i, ":", site)
 			testaSite(site)
 		}
-		// Para esperar algum tempo
 		time.Sleep(delay * time.Second)
 		fmt.Println("")
 	}
@@ -127,15 +122,14 @@ func leSitesDoArquivo() []string {
 }
 
 func registraLog(site string, status bool) {
-	// Abre e cria o arquivo
-	// O_RDWR ler e escrever
-	// O_CREATE criar arquivo
-	// 0666 permisão
-	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE, 0666)
+	// os.O_APPEND colocar o item no final da linha
+	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println(arquivo)
+	arquivo.WriteString(site + " - online: " + strconv.FormatBool(status) + "\n")
+
+	arquivo.Close()
 }
